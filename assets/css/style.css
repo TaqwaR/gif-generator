@@ -1,0 +1,22 @@
+.my-jumbotron {
+  width: 75%;
+  margin: 0 auto;
+  background-color: lavender;
+}
+
+
+.my-row {
+  /* margin-left: 24em; */
+  width: 75%;
+  margin: 0 auto;
+}
+
+.my-margin {
+  margin-top: 2em;
+}
+
+.my-btn-margin {
+ margin-right: 5px;
+ margin-bottom: 5px;
+ background-color: #24b1bb;
+}
