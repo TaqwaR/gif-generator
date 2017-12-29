@@ -9,7 +9,7 @@ for (var i = 0; i < topics.length; i++) {
 };
 
 
-$('button').on('click', function(){
+$('button').on('click', function() {
   var topic = $(this).data("search");
   var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + topic + "&api_key=QFBzn6T2MHSnjLBzFwDdULuI7kCEozbq&limit=15";
   console.log(queryURL);
@@ -17,7 +17,7 @@ $('button').on('click', function(){
   $.ajax({
     url: queryURL,
     method: 'GET'
-  }).done( function(response) {
+  }).done(function(response) {
     console.log(response);
 
     for (var i = 0; i < response.data.length; i++) {
@@ -26,33 +26,31 @@ $('button').on('click', function(){
       var gifImg = $("<img>");
 
       gifImg.attr('src', response.data[i].images.fixed_height.url);
+      gifImg.attr('data-still', response.data[i].images.fixed_height_still.url);
+      gifImg.attr('data-animate', response.data[i].images.fixed_height.url);
+      gifImg.attr('data-state', 'animate');
 
       gifDiv.append(gifInfo);
-      gifDiv.append(gifImg)
+      gifDiv.append(gifImg);
 
       $('.gifs-here').prepend(gifDiv);
-    }
+    };
 
 
     $(gifImg).on('click', function() {
 
-      for (var i = 0; i < response.data.length; i++) {
-        if (gifImg.attr('src', response.data[i].images.fixed_height.url) == true) {
-          gifImg.attr('src', response.data[i].images.fixed_height_still.url);
-        } else {
-            gifImg.attr('src', response.data[i].images.fixed_height.url);
-          }
-        };
-      });
+      var state = $(this).attr("data-state");
 
-      // if (gifImg.attr('src', response.data.images.fixed_height.url) === true) {
-      //   gifImg.attr('src', response.data.images.fixed_height_still.url);
-      // };
-      // if (gifImg.attr('src', response.data.images.fixed_height_still.url) === true) {
-      //   gifImg.attr('src', response.data.images.fixed_height.url);
-      // };
-
+      if (state === 'animate') {
+        $(this).attr('src', $(this).attr('data-still'));
+        $(this).attr('data-state', 'still');
+      } else {
+        $(this).attr('src', $(this).attr('data-animate'));
+        $(this).attr('data-state', 'animate');
+      }
 
     });
 
   });
+
+});
