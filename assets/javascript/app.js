@@ -1,15 +1,34 @@
 
+//Global Variables
+//======================
+
 var topics = ["Nina+Simone","Keith+Haring","Yayoi+Kusama", "Basquiat", "SZA", "Quinta"];
+
 var quotes = ["I'll tell you what Freedom is to me. No fear.","Children know something that most people have forgotten.","I am the modern Alice in Wonderland","Royalty, heroism, and the streets.","I’m sorry I’m not more ladylike","I don't have perfect eyebrows but I have a good heart."];
 
 
+
+
+
+//Global initial for loop to create HTML elements
+//======================
+
 for (var i = 0; i < topics.length; i++) {
-  var button = '<button type="button" class="btn btn-primary my-btn-margin" data-search="'+ topics[i] +'">' + quotes[i] + '</button>'
+  var button = '<button type="button" class="btn btn-primary my-btn" data-search="'+ topics[i] +'">' + quotes[i] + '</button>'
   $('.btns-here').append(button);
 };
 
 
-$('button').on('click', function() {
+
+
+
+//Functions
+//======================
+
+
+////Click function that creates gif image div for each initial button.
+function gifCreator() {
+
   var topic = $(this).data("search");
   var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + topic + "&api_key=QFBzn6T2MHSnjLBzFwDdULuI7kCEozbq&limit=15";
   console.log(queryURL);
@@ -36,7 +55,7 @@ $('button').on('click', function() {
       $('.gifs-here').prepend(gifDiv);
     };
 
-
+////Function that anaimates/stills gifs on click. Currently only works for the first gif.
     $(gifImg).on('click', function() {
 
       var state = $(this).attr("data-state");
@@ -53,4 +72,42 @@ $('button').on('click', function() {
 
   });
 
+};
+
+////Function that creates new button and appends it to div once wehn "submit" button is clicked.
+function newBtnCreator() {
+
+  var userInput = $("input:text").val();
+  var newBtnDiv = '<button type="button" class="btn btn-primary new-btn" data-search="'+ userInput +'">' + userInput + '</button>';
+  var newBtns = [];
+
+  newBtns.push(userInput);
+
+  console.log(newBtns);
+  console.log(userInput);
+
+  $('.btns-here').append(newBtnDiv);
+
+}
+
+////Placeholder
+function newbtnGIF() {
+
+}
+
+
+
+
+//Process
+//======================
+
+
+$('.my-btn').click(gifCreator);
+
+$('.submit-btn').click(newBtnCreator);
+
+// $('.new-btn').click(gifCreator);
+
+$('.new-btn').on("click", function () {
+    gifCreator();
 });

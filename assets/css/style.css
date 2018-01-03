@@ -15,8 +15,14 @@
   margin-top: 2em;
 }
 
-.my-btn-margin {
+.my-btn {
  margin-right: 5px;
  margin-bottom: 5px;
  background-color: #24b1bb;
+}
+
+.new-btn {
+  margin-right: 5px;
+  margin-bottom: 5px;
+  background-color: #24b1bb;
 }
