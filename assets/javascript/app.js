@@ -53,28 +53,47 @@ function gifCreator() {
       gifDiv.append(gifImg);
 
       $('.gifs-here').prepend(gifDiv);
+
+
+      $(gifImg).on('click', function() {
+        console.log('click');
+        var state = $(this).attr("data-state");
+
+        if (state === 'animate') {
+          $(this).attr('src', $(this).attr('data-still'));
+          $(this).attr('data-state', 'still');
+        } else {
+          $(this).attr('src', $(this).attr('data-animate'));
+          $(this).attr('data-state', 'animate');
+        }
+
+
+      });
+
+
     };
 
 ////Function that anaimates/stills gifs on click. Currently only works for the first gif.
-    $(gifImg).on('click', function() {
-
-      var state = $(this).attr("data-state");
-
-      if (state === 'animate') {
-        $(this).attr('src', $(this).attr('data-still'));
-        $(this).attr('data-state', 'still');
-      } else {
-        $(this).attr('src', $(this).attr('data-animate'));
-        $(this).attr('data-state', 'animate');
-      }
-
-    });
+    // $(gifImg).on('click', function() {
+    //   console.log('click');
+    //   var state = $(this).attr("data-state");
+    //
+    //   if (state === 'animate') {
+    //     $(this).attr('src', $(this).attr('data-still'));
+    //     $(this).attr('data-state', 'still');
+    //   } else {
+    //     $(this).attr('src', $(this).attr('data-animate'));
+    //     $(this).attr('data-state', 'animate');
+    //   }
+    //
+    //
+    // });
 
   });
 
 };
 
-////Function that creates new button and appends it to div once wehn "submit" button is clicked.
+////Function that creates new button and appends it to div once when "submit" button is clicked.
 function newBtnCreator() {
 
   var userInput = $("input:text").val();
@@ -87,6 +106,8 @@ function newBtnCreator() {
   console.log(userInput);
 
   $('.btns-here').append(newBtnDiv);
+
+  $('.new-btn').click(gifCreator);
 
 }
 
@@ -108,6 +129,6 @@ $('.submit-btn').click(newBtnCreator);
 
 // $('.new-btn').click(gifCreator);
 
-$('.new-btn').on("click", function () {
-    gifCreator();
-});
+// $('.new-btn').on("click", function () {
+//     gifCreator();
+// });
