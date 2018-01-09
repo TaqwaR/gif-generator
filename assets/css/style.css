@@ -1,9 +1,17 @@
+
+h1 {
+  font-family: 'Rock Salt', cursive;
+}
+
 .my-jumbotron {
   width: 75%;
   margin: 0 auto;
-  background-color: lavender;
+  background-color: black;
 }
 
+.jumbotron-txt {
+  color: white;
+}
 
 .my-row {
   /* margin-left: 24em; */
@@ -18,11 +26,15 @@
 .my-btn {
  margin-right: 5px;
  margin-bottom: 5px;
- background-color: #24b1bb;
+ background-color: black;
 }
 
 .new-btn {
   margin-right: 5px;
   margin-bottom: 5px;
-  background-color: #24b1bb;
+  background-color: black;
+}
+
+.my-submit {
+  width: 100%;
 }

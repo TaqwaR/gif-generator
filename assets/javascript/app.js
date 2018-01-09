@@ -2,9 +2,17 @@
 //Global Variables
 //======================
 
-var topics = ["Nina+Simone","Keith+Haring","Yayoi+Kusama", "Basquiat", "SZA", "Quinta"];
+var topics = ["Nina+Simone",
+    "Basquiat",
+    "SZA", 
+    "Keith+Haring",
+    "Quinta"];
 
-var quotes = ["I'll tell you what Freedom is to me. No fear.","Children know something that most people have forgotten.","I am the modern Alice in Wonderland","Royalty, heroism, and the streets.","I’m sorry I’m not more ladylike","I don't have perfect eyebrows but I have a good heart."];
+var quotes = ["I'll tell you what Freedom is to me. No fear.",
+    "Royalty, heroism, and the streets.",
+    "I’m sorry I’m not more ladylike",
+    "Children know something that most people have forgotten.",
+    "I don't have perfect eyebrows but I have a good heart."];
 
 
 
@@ -73,22 +81,6 @@ function gifCreator() {
 
     };
 
-////Function that anaimates/stills gifs on click. Currently only works for the first gif.
-    // $(gifImg).on('click', function() {
-    //   console.log('click');
-    //   var state = $(this).attr("data-state");
-    //
-    //   if (state === 'animate') {
-    //     $(this).attr('src', $(this).attr('data-still'));
-    //     $(this).attr('data-state', 'still');
-    //   } else {
-    //     $(this).attr('src', $(this).attr('data-animate'));
-    //     $(this).attr('data-state', 'animate');
-    //   }
-    //
-    //
-    // });
-
   });
 
 };
@@ -98,21 +90,12 @@ function newBtnCreator() {
 
   var userInput = $("input:text").val();
   var newBtnDiv = '<button type="button" class="btn btn-primary new-btn" data-search="'+ userInput +'">' + userInput + '</button>';
-  var newBtns = [];
 
-  newBtns.push(userInput);
-
-  console.log(newBtns);
   console.log(userInput);
 
   $('.btns-here').append(newBtnDiv);
 
   $('.new-btn').click(gifCreator);
-
-}
-
-////Placeholder
-function newbtnGIF() {
 
 }
 
@@ -126,9 +109,3 @@ function newbtnGIF() {
 $('.my-btn').click(gifCreator);
 
 $('.submit-btn').click(newBtnCreator);
-
-// $('.new-btn').click(gifCreator);
-
-// $('.new-btn').on("click", function () {
-//     gifCreator();
-// });
